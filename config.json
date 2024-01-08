@@ -1,0 +1,53 @@
+{
+  "workflows": {
+    "flock": [
+      {
+        "name": "kill-all-docker-containers"
+      },
+      {
+        "run": "i3-resurrect restore -p flock -n -w 4 --layout-only"
+      },
+      {
+        "name": "open-webstorm",
+        "data": {
+          "project": "/home/tyler/Development/flock"
+        }
+      },
+      {
+        "windowed": true,
+        "run": "docker compose up",
+        "cwd": "/home/tyler/Development/flock"
+      },
+      {
+        "name": "wait-on-host",
+        "data": {
+          "url": "https://localhost:3092"
+        }
+      },
+      {
+        "name": "wait-on-host",
+        "data": {
+          "url": "http://localhost:4444/status"
+        }
+      },
+      {
+        "name": "open-browser",
+        "data": {
+          "url": "https://localhost:3092"
+        }
+      },
+      {
+        "name": "open-browser",
+        "data": {
+          "url": "https://localhost:3050"
+        }
+      },
+      {
+        "name": "open-browser",
+        "data": {
+          "url": "https://linear.app/mthealthy/team/MT/active"
+        }
+      }
+    ]
+  }
+}
